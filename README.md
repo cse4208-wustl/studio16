@@ -45,22 +45,24 @@ Put all of your template code (specializations, additional templates, and class 
    - why the `std::string` variable is printed in quotes but the string literal `"literal"` is not (**Hint:** what type does the compiler deduce for `T` when `"literal"` is passed to a parameter of type `const T&`?), and
    - why the string literal passed to `printit<std::string>` *is* printed in quotes.
 
-4. In `printit.h`, add two more declarations, in this order:
+4. When the base template is passed a pointer such as `ip`, it inserts the pointer itself, so the output is an address like `0x7ffd8478a6e4`. In this exercise you will add two functions that instead print the value the pointer points to, each with a different label so you can tell from the output which one was called.
 
-   1. a full specialization of the base template for `int*` that prints `int* to ` followed by the value the pointer points to, as in:
+   In `printit.h`, declare and define these two functions, in this order:
+
+   1. a full specialization of the base template for `int*`. Instead of inserting the pointer itself, its definition should insert `int* to `, then the value the pointer points to (`*p`), then a newline. For example, for `ip` it should print `int* to 42`. Its declaration should look something like:
 
       ```cpp
       template <> inline void printit(std::ostream& os, int* const& p);
       ```
 
-   2. a second function template overload of `printit` for pointers, which prints `pointer to ` followed by the value the pointer points to:
+   2. a second function template overload of `printit` for pointers of any type. Its definition should insert `pointer to `, then the value the pointer points to (`*p`), then a newline. For example, for `ip` it should print `pointer to 42`. Its declaration should look something like:
 
       ```cpp
       template <typename T>
       void printit(std::ostream& os, T* const& p);
       ```
 
-   Build and run your program, and record its output. Then move the `int*` specialization so that it comes *after* the pointer template instead of before it, and build and run your program again.
+   Build and run your program, and record its output. Then move the `int*` specialization (both its declaration and its definition) so that it comes *after* the pointer template instead of before it, and build and run your program again.
 
    As the answer to this exercise, please show the output from both runs, and explain:
 

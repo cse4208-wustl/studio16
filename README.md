@@ -40,7 +40,7 @@ Put all of your template code (specializations, additional templates, and class 
    - a `char`, and
    - a `double`.
 
-   Before you build and run your program, predict which of the calls in `main` will print their argument in quotes. Then build and run it. As the answer to this exercise, please show the output, say which of your predictions were wrong, and explain:
+   Before you build and run your program, predict which of the calls in `main` will print their argument in quotes. Then build and run it. As the answer to this exercise, please show the declaration and definition of your `std::string` specialization and the output, say which of your predictions were wrong, and explain:
 
    - why the `std::string` variable is printed in quotes but the string literal `"literal"` is not (**Hint:** what type does the compiler deduce for `T` when `"literal"` is passed to a parameter of type `const T&`?), and
    - why the string literal passed to `printit<std::string>` *is* printed in quotes.
@@ -64,7 +64,7 @@ Put all of your template code (specializations, additional templates, and class 
 
    Build and run your program, and record its output. Then move the `int*` specialization (both its declaration and its definition) so that it comes *after* the pointer template instead of before it, and build and run your program again.
 
-   As the answer to this exercise, please show the output from both runs, and explain:
+   As the answer to this exercise, please show the declarations and definitions of your `int*` specialization and your pointer template, and the output from both runs, and explain:
 
    - why moving the `int*` specialization changed which function was called for `ip`, even though the specialization's code did not change (**Hint:** which template does a full specialization specialize, and does a specialization take part in overload resolution, or only the template it specializes?), and
    - why the `const char*` variable `cp` now prints only a single character.
@@ -78,11 +78,11 @@ Put all of your template code (specializations, additional templates, and class 
 
    Have each of them print `non-template: ` followed by its argument (with the `std::string` overload still printing its argument in quotes).
 
-   Build and run your program. As the answer to this exercise, please show the output, and explain why each non-template overload was chosen over the function templates and their specializations. Which outputs from the previous exercises did these overloads fix?
+   Build and run your program. As the answer to this exercise, please show the declarations and definitions of your non-template overloads and the output, and explain why each non-template overload was chosen over the function templates and their specializations. Which outputs from the previous exercises did these overloads fix?
 
 6. Function templates cannot be partially specialized, but class templates can. A common technique is to put the type-specific behavior in a class template, and have the function template forward to it.
 
-   First, remove the code you added to `printit.h` in exercises 3 and 4 and the non-template overloads you added to `studio16.cpp` in exercise 5 (your answers already record them). Then, in `printit.h`:
+   First, remove the code you added to `printit.h` in exercises 3 and 4 and the non-template overloads you added to `studio16.cpp` in exercise 5. Then, in `printit.h`:
 
    1. Declare and define a class template `Printer` with a single type parameter `T`, and a static member function `print(std::ostream& os, const T& t)` that inserts `t` into `os` (without a newline).
    2. Declare and define a full specialization `Printer<std::string>` whose `print` inserts the string in double quotes.

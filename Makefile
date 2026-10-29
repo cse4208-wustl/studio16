@@ -10,7 +10,7 @@ CMPL_SRCS	= studio16.cpp
 TMPL_SRCS	= 
 
 #               Header (.h) files
-HEADER_FILES    = 
+HEADER_FILES    = printit.h
 
 #               Any special flags that should be set for compilation
 SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE
